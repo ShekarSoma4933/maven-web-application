@@ -28,6 +28,13 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 	</properties>
+	
+	<repositories>
+		<repository>
+		<id>nexus</id>
+		<url>http://localhost:8081/repository/wallmart-group-repo/</url>
+		</repository>
+	</repositories>
 
 	<dependencies>
 		
@@ -82,14 +89,14 @@
 			<version>${spring.version}</version>
 		</dependency>
 		
-		<!-- provided dependencies -->
+		<!-- provided dependencies 
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>-->
 		
 	</dependencies>
 	
@@ -97,14 +104,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://3.19.185.59:8081/repository/flipkart-releases/</url>
+	      <name>SS Technologies Releases Nexus Repository</name>
+	      <url>http://localhost:8081/repository/wallmart-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://3.19.185.59:8081/repository/flipkart-snapshot/</url>
+	      <name>SS Technologies Snapshot Nexus Repository </name>
+	      <url>http://localhost:8081/repository/wallmart-snapshot/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
