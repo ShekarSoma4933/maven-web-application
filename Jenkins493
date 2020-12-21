@@ -1,0 +1,24 @@
+node{
+     def maven_home = tool name : "maven3.6.0"
+     
+   stage('CheckoutCode'){
+       git branch: 'development', credentialsId: 'e23ee44c-b223-4f1b-b602-da77c4bb9490', url: 'https://github.com/ShekarSoma4933/maven-web-application.git'
+   } 
+   stage('Build'){
+      
+       sh "${maven_home}/bin/mvn clean package"
+   }
+   stage('ExecuteSonarQubeReport'){
+       sh "${maven_home}/bin/mvn sonar:sonar"
+   }
+   stage('NexusBuildArtifactDeploy'){
+       sh "${maven_home}/bin/mvn deploy"
+   }
+   stage("ServerDeployment"){
+       sshagent(['b335fb87-fd5f-45d3-abd3-e2ea3264e302']) {
+    sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@65.0.177.2:/opt/apache-tomcat-9.0.41/webapps/"
+        }
+       
+   }
+   
+}
